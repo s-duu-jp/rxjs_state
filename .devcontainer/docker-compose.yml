@@ -1,0 +1,19 @@
+version: "3"
+services:
+  app:
+    container_name: rxjs_store_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_VAR: 16
+        USERNAME: node
+        USER_UID: 1000
+        USER_GID: 1000
+    command: sleep infinity
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ..:/workspace:cached
+      - ~/.gitconfig:/home/node/.gitconfig
+      - ~/.ssh:/home/node/.ssh
