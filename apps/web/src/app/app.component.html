@@ -1,1 +1,5 @@
-Hello
+<pre><code>{{state$ | async | json}}</code></pre>
+<!-- asyncパイプを使うことによりHTMLで購読 -->
+<button (click)="setState()">値を切り替え</button>
+<button (click)="getState()">現在の値</button>
+<button (click)="ngOnDestroy()">購読をやめる</button>
