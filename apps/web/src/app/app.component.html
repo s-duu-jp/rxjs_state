@@ -1,5 +1,6 @@
 <p>現在のstoreの状態</p>
 <p>{{ storeService.state$ | async | json }}</p>
+<button (click)="ngOnDestroy()">購読をやめる</button>
 <hr />
 <p>page1</p>
 <product-page1></product-page1>
