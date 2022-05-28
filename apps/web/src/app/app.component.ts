@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { StoreService } from "./services/store.service";
 
 @Component({
   selector: "product-root",
@@ -7,5 +7,5 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(public storeService: StoreService) {}
 }

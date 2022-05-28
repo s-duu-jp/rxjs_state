@@ -1,35 +1,39 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnDestroy, OnInit } from "@angular/core";
+import { takeUntil } from "rxjs";
+import { StoreService } from "../../services/store.service";
 
 @Component({
   selector: "product-page1",
   templateUrl: "./page1.component.html",
   styleUrls: ["./page1.component.scss"],
 })
-export class Page1Component implements OnInit {
-  constructor() {}
+export class Page1Component implements OnInit, OnDestroy {
+  message = "";
 
-  ngOnInit(): void {}
+  constructor(public storeService: StoreService) {}
 
-  // onDestroy$ = new EventEmitter();
-  // state$ = new BehaviorSubject<{ hoge: boolean }>({ hoge: true });
+  onDestroy$ = new EventEmitter();
 
-  // ngOnInit(): void {
-  //   this.state$.pipe(takeUntil(this.onDestroy$)).subscribe((state) => {
-  //     state.hoge = !state.hoge;
-  //     console.log(`値が変わったよ！：${state.hoge}`);
-  //   });
-  // }
+  ngOnInit(): void {
+    console.log(`購読はじめたよ！`);
+    this.storeService.state$
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((state) => {
+        console.log(`値が変わったよ！：${state.message}`);
+      });
+  }
 
-  // setState(): void {
-  //   this.state$.next({ hoge: this.state$.getValue().hoge });
-  // }
+  setState(): void {
+    this.storeService.next({
+      message: this.message,
+    });
+  }
 
-  // getState() {
-  //   console.log(this.state$.getValue());
-  // }
+  getState(): void {
+    console.log({ hoge: this.storeService.state$.getValue().message });
+  }
 
-  // ngOnDestroy() {
-  //   console.log(`購読やめたよ！`);
-  //   this.onDestroy$.emit();
-  // }
+  ngOnDestroy(): void {
+    this.onDestroy$.emit();
+  }
 }

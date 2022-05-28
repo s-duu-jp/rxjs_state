@@ -1,6 +1,8 @@
-<div>
-  <button routerLink="/page1">page1</button
-  ><button routerLink="/page2">page2</button>
-</div>
+<p>現在のstoreの状態</p>
+<p>{{ storeService.state$ | async | json }}</p>
 <hr />
-<router-outlet></router-outlet>
+<p>page1</p>
+<product-page1></product-page1>
+<hr />
+<p>page2</p>
+<product-page2></product-page2>
