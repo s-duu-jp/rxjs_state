@@ -5,4 +5,10 @@ import { Component } from "@angular/core";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {}
+export class AppComponent {
+  message = String(new Date());
+
+  updateMessage() {
+    this.message = String(new Date());
+  }
+}
