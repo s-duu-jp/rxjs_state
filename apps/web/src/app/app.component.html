@@ -1,5 +1,6 @@
-<pre><code>{{state$ | async | json}}</code></pre>
-<!-- asyncパイプを使うことによりHTMLで購読 -->
-<button (click)="setState()">値を切り替え</button>
-<button (click)="getState()">現在の値</button>
-<button (click)="ngOnDestroy()">購読をやめる</button>
+<div>
+  <button routerLink="/page1">page1</button
+  ><button routerLink="/page2">page2</button>
+</div>
+<hr />
+<router-outlet></router-outlet>
